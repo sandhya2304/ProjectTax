@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org"  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+      layout:decorator="template" >
+<head>
+<meta charset="utf-8" />
+<title>Enterprise</title>
+</head>
+<body>
+
+  <div layout:fragment="content" class="container">
+
+      <div class="panel panel-primary">
+        <div class="panel-heading">List of enterprises</div>
+        <div class="panel-body">
+          <div class="container">
+            <form th:action="@{/enterprise}" method="get">
+             <label>Search:</label>
+             <input type="text" name="search" />
+             <button type="submit" class="btn btn-primary">Search </button>
+            </form>
+          
+          </div>
+        
+           <table class="table table-striped">
+
+			<tr>
+				<th>Code:</th>
+				<th>name:</th>
+				<th>email:</th>
+				<th>Social Reason</th>
+			</tr>
+			<tr th:each="e:${listEnterprise}">
+				<td th:text="${e.code}"></td>
+				<td th:text="${e.name}"></td>
+				<td th:text="${e.email}"></td>
+				<td th:text="${e.reasonSocial}"></td>
+			</tr>
+
+		</table>
+		<div>
+		  <ul class="nav nav-pills">
+		    <li th:Class="${status.index==pageCurrent}?'active':'' " th:each="p,status:${pages}">
+		        <a th:href="@{/enterprise(page=${status.index},size=4)}" th:text="${status.index}"></a>
+		    </li>
+		  </ul>
+		</div>
+        
+        </div>
+      
+      </div>
+
+
+		
+
+	</div>
+
+</body>
+</html>
