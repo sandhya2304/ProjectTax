@@ -31,15 +31,15 @@ public class AProjectTaxApplication  implements CommandLineRunner
 	public void run(String... arg0) throws Exception
 	{
 		
-	 Enterprise	e1=enterpriseRepository.save(new Enterprise("Mahraja","sharma@gmail.com","manufacture"));
+	/* Enterprise	e1=enterpriseRepository.save(new Enterprise("lolo","sharma@gmail.com","manufacture"));
 	 
-	 Enterprise	e2=enterpriseRepository.save(new Enterprise("mann","group@gmail.com","finsihing"));
+	 Enterprise	e2=enterpriseRepository.save(new Enterprise("bebo","group@gmail.com","finsihing"));
 	 
 	 taxRepository.save(new Vat("vat habitate",new Date(),60000, e1));
 	 taxRepository.save(new Vat("vat car",new Date(),60000, e1));
 	 
 	 taxRepository.save(new IncomeTax("IT 2017",new Date(),3, e1));
-	 taxRepository.save(new Vat("vat car",new Date(),60000, e2));
+	 taxRepository.save(new Vat("vat car",new Date(),60000, e2));*/
 	 
 		
 	}

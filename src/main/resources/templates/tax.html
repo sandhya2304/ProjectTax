@@ -13,9 +13,12 @@
         <div class="panel-heading">List of enterprises</div>
         <div class="panel-body">
           <div class="container">
-            <form th:action="@{/enterprise}" method="get">
-             <label>Search:</label>
-             <input type="text" name="search" />
+            <form th:action="@{/tax}" method="get" id="myForm">
+             <label>Enterprise:</label>
+             <select name="code" onchange="document.getElementById('myForm').submit" >
+               <option th:each="e:${enterprise}" th:text="${e.name}" th:value="${e.code}"></option>
+             
+             </select>
              <button type="submit" class="btn btn-primary">Search </button>
             </form>
           
@@ -24,18 +27,18 @@
            <table class="table table-striped">
 
 			<tr>
-				<th>Code:</th>
-				<th>name:</th>
-				<th>email:</th>
-				<th>Social Reason</th>
-				<th>Tax Enquiry </th>
+				<th>id:</th>
+				<th>title:</th>
+				<th>dateTax:</th>
+				<th>balance</th>
+				<th>Type:</th>
 			</tr>
-			<tr th:each="e:${listEnterprise}">
-				<td th:text="${e.code}"></td>
-				<td th:text="${e.name}"></td>
-				<td th:text="${e.email}"></td>
-				<td th:text="${e.reasonSocial}"></td>
-				<td><a th:href="@{/tax(code=${e.code})}">Tax</a> </td>
+			<tr th:each="t:${taxes}">
+				<td th:text="${t.id}"></td>
+				<td th:text="${t.title}"></td>
+				<td th:text="${t.dateTax}"></td>
+				<td th:text="${t.balance}"></td>
+				<td th:text="${t.class.simpleName}"></td>
 			</tr>
 
 		</table>

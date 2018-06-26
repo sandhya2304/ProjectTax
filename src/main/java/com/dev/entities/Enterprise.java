@@ -4,9 +4,14 @@ import java.io.Serializable;
 import java.util.Collection;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Email;
 
 
 @Entity
@@ -14,11 +19,17 @@ public class Enterprise implements Serializable
 {
 	@Id @GeneratedValue
 	private Long code;
+	@NotNull
+	@Size(min=3,max=20)
 	private String name;
+	@NotNull
+	@Email
 	private String email;
+	@NotNull
+	@Size(min=3,max=20)
 	private String reasonSocial;
 	
-	@OneToMany(mappedBy="enterprise")
+	@OneToMany(mappedBy="enterprise",fetch=FetchType.LAZY)
 	private Collection<Tax> taxes;
 	
 	public Enterprise() {

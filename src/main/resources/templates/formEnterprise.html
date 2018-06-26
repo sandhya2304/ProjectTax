@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org"  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+      layout:decorator="template" >
+<head>
+<meta charset="utf-8" />
+<title>Enterprise</title>
+</head>
+<body>
+
+	<div class="col-md-6 col-sm-6 col-xs-12">
+		<div layout:fragment="content" class="container">
+
+			<div class="panel panel-primary">
+				<div class="panel-heading">Save the enterprises</div>
+				<div class="panel-body">
+					<form th:action="@{/saveEnterprise}" method="POST">
+						<div class="form-group">
+							<label class="control-label">Name:</label> <input
+								class="form-control" type="text" name="name"
+								th:value="${enterprise.name}" /> 
+								<span th:errors="${enterprise.name}"></span>
+						</div>
+						<div class="form-group">
+							<label class="control-label">email:</label> <input
+								class="form-control" type="text" name="email"
+								th:value="${enterprise.email}" /> 
+								<span th:errors="${enterprise.email}"></span>
+						</div>
+						<div class="form-group">
+							<label class="control-label">reasonSocial:</label> <input
+								class="form-control" type="text" name="reasonSocial"
+								th:value="${enterprise.reasonSocial}" /> 
+								<span th:errors="${enterprise.reasonSocial}"></span>
+						</div>
+						<button class="btn btn-primary">Save</button>
+					</form>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+</body>
+</html>
